@@ -1,0 +1,19 @@
+{
+  "name": "demo_project",
+  "version": "1.0.0",
+  "description": "1. Build a Monorepo workspace\r 2. Create a multi-tenant DB\r 3. Implementation of single sign-on\r 4. Implementation of CI/CD in the project\r 5. Multiple front-end applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SayeedSanjana/demo_project.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SayeedSanjana/demo_project/issues"
+  },
+  "homepage": "https://github.com/SayeedSanjana/demo_project#readme"
+}
