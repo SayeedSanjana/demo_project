@@ -11,11 +11,25 @@
                     <div class="rounded-md shadow-sm -space-y-px">
                         <div>
                             <label for="email-address" class="sr-only">Email address</label>
-                            <input v-model="form.email" id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+                            <input  @blur="v$.form.email.$touch()" v-model="form.email" id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+                            <span v-show="v$.form.email.$error" class="mt-2 text-sm text-red-400">
+                                <div v-for="error of v$.form.email.$errors" :key="error.$uid">
+                                    <small class="form-error-text">
+                                        {{error.$message}}
+                                    </small>
+                                </div>
+                            </span>
                         </div>
                         <div>
                             <label for="password" class="sr-only">Password</label>
-                            <input v-model="form.password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+                            <input  @blur="v$.form.password.$touch()" v-model="form.password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+                            <span v-show="v$.form.password.$error" class="mt-2 text-sm text-red-400">
+                                <div v-for="error of v$.form.password.$errors" :key="error.$uid">
+                                    <small class="form-error-text">
+                                        {{error.$message}}
+                                    </small>
+                                </div>
+                            </span>
                         </div>
                     </div>
                     <div class="flex items-center justify-between">
@@ -47,6 +61,9 @@
     </div>
 </template>
 <script>
+import axios from "axios";
+import useValidate from '@vuelidate/core';
+import {required,email} from '@vuelidate/validators';
     export default {
         data(){
             return {
@@ -56,8 +73,34 @@
                 }
             }
         },
+         setup(){
+            return{
+            v$: useValidate(),
+            }
+        },
+        validations(){
+        return {
+            form:{
+               email:{required,email},
+               password:{required}
+               }
+            }
+        },
         methods:{
-            login(){
+            async login(){
+                this.v$.$touch();
+                if (!this.v$.$error) {
+                await axios.post('http://localhost:3000/api/users/login', this.form, )
+                    .then((response) => {
+                    console.log(response);
+                    alert(response.data.message);
+                    localStorage.setItem("userInfo", JSON.stringify(response.data.data));
+                    this.$router.push({name:'HomeView'});
+                    })
+                    .catch((error) => {
+                    alert(error);
+                  })
+                }
                 console.log(this.form);
             }
                 
