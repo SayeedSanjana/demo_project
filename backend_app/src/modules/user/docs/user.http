@@ -8,7 +8,7 @@ Content-Type: application/json
     "phone": "987654321",
     "dob": "10/10/1998",
     "address": "321 Last St",
-    "email": "anthony@mail.com",
+    "email": "anthony123@mail.com",
     "password": "123456"
 }
 
@@ -17,6 +17,6 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-    "email": "john@mail.com",
+    "email": "anthony@mail.com",
     "password": "123456"
 }
