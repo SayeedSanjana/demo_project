@@ -1,9 +1,33 @@
 [{
   "_id": {
-    "$oid": "62bbd60990cfb8ce4100daeb"
+    "$oid": "62bbebc88aa3ec5c728d9711"
   },
-  "name": "John Doe",
+  "firstName": "John",
+  "lastName": "Doe",
+  "dob": {
+    "$date": {
+      "$numberLong": "631130400000"
+    }
+  },
+  "phone": "123456789",
+  "address": "123 Main St",
   "email": "john@mail.com",
-  "password": "$2b$10$LPTH5IfGi2bxryUGGa7fqOtr.xhdp6U824PRUCFPs3VSpmXFPYGB6",
+  "password": "$2b$10$.0x91YCBX6Qc5W8QfIHeK.DEjQ/f1AJYx0LqF7.9qgbJ799/1ROBu",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62bbec008aa3ec5c728d9716"
+  },
+  "firstName": "Anthony",
+  "lastName": "Elyard",
+  "dob": {
+    "$date": {
+      "$numberLong": "907956000000"
+    }
+  },
+  "phone": "987654321",
+  "address": "321 Last St",
+  "email": "anthony@mail.com",
+  "password": "$2b$10$3SnaT2rTlteHCFQ8wk/3OuVdfo8lhe3bDM3IaF30fR53kdUEmO3qi",
   "__v": 0
 }]

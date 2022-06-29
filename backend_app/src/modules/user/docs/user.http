@@ -3,8 +3,12 @@ POST http://localhost:3000/api/users/register
 Content-Type: application/json
 
 {
-    "name": "John Doe",
-    "email": "john@mail.com",
+    "firstName": "Anthony",
+    "lastName": "Elyard",
+    "phone": "987654321",
+    "dob": "10/10/1998",
+    "address": "321 Last St",
+    "email": "anthony@mail.com",
     "password": "123456"
 }
 
