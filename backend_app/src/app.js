@@ -1,5 +1,6 @@
 import {config} from "dotenv"
 import express from 'express';
+import cors from 'cors';
 import { error_handler } from "./config/error.handler.js";
 
 // Load environment variables from .env file
@@ -11,7 +12,8 @@ export const mount_app = (api) => {
     // middlewares
     app.use([
         express.json(),
-        express.urlencoded({extended: true})
+        express.urlencoded({extended: true}),
+        cors()
     ])
 
     // mount routers
