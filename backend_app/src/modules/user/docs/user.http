@@ -1,0 +1,22 @@
+### register
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+
+{
+    "firstName": "Anthony",
+    "lastName": "Elyard",
+    "phone": "987654321",
+    "dob": "10/10/1998",
+    "address": "321 Last St",
+    "email": "anthony@mail.com",
+    "password": "123456"
+}
+
+### login
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+    "email": "john@mail.com",
+    "password": "123456"
+}
