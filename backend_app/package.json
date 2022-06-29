@@ -2,7 +2,7 @@
     "name": "demo-backend",
     "version": "1.0.0",
     "main": "index.js",
-    "author": "rafi0x",
+    "author": "",
     "license": "MIT",
     "type": "module",
     "scripts": {
