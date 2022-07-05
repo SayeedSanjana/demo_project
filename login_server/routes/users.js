@@ -34,7 +34,10 @@ var Account = require('../models/account');
       res.render('login', { user : req.user });
   });
 
-  router.post('/login', passport.authenticate('local'), function(req, res, next) {
+  router.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  }), function(req, res, next) {
     res.send('post users login')
     console.log("is it happening?","POST")
       // res.redirect('/');
