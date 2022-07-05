@@ -90,7 +90,7 @@ import {required,email} from '@vuelidate/validators';
             async login(){
                 this.v$.$touch();
                 if (!this.v$.$error) {
-                await axios.post('http://localhost:3000/api/users/login', this.form, )
+                await axios.post('http://localhost:3001/api/users/login', this.form, )
                     .then((response) => {
                     console.log(response);
                     alert(response.data.message);

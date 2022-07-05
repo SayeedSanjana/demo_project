@@ -172,7 +172,7 @@ import {required,numeric,minLength,email} from '@vuelidate/validators';
             async createAccount(){
                 this.v$.$touch();
                 if (!this.v$.$error) {
-                await axios.post('http://localhost:3000/api/users/register', this.form, )
+                await axios.post('http://localhost:3001/api/users/register', this.form, )
                     .then((response) => {
                     console.log(response);
                      alert(response.data.message);
