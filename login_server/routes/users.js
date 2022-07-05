@@ -5,7 +5,7 @@ var router = express.Router();
 var passport = require('passport');
 var Account = require('../models/account');
 
-module.exports = function (app) {
+
 
   router.get('/', function (req, res, next) {
       res.render('index', { user : req.user });
@@ -28,13 +28,13 @@ module.exports = function (app) {
 });
 
 
-  router.get('/api/users/login', function(req, res, next) {
+  router.get('/login', function(req, res, next) {
     console.log("is it happening?","GET")
     res.send('get users login')
       res.render('login', { user : req.user });
   });
 
-  router.post('/api/users/login', passport.authenticate('local'), function(req, res, next) {
+  router.post('/login', passport.authenticate('local'), function(req, res, next) {
     res.send('post users login')
     console.log("is it happening?","POST")
       // res.redirect('/');
@@ -49,5 +49,5 @@ module.exports = function (app) {
       res.send("pong!", 200);
   });
 
-};
 
+  module.exports = router
