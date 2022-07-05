@@ -28,12 +28,16 @@ module.exports = function (app) {
 });
 
 
-  router.get('/login', function(req, res, next) {
+  router.get('/api/users/login', function(req, res, next) {
+    console.log("is it happening?","GET")
+    res.send('get users login')
       res.render('login', { user : req.user });
   });
 
-  router.post('/login', passport.authenticate('local'), function(req, res, next) {
-      res.redirect('/');
+  router.post('/api/users/login', passport.authenticate('local'), function(req, res, next) {
+    res.send('post users login')
+    console.log("is it happening?","POST")
+      // res.redirect('/');
   });
 
   router.get('/logout', function(req, res, next) {
