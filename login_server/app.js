@@ -5,7 +5,7 @@ var cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const port = process.env.PRRT || 3000;
+const port = process.env.PORT || 3000;
 
 var http = require('http');
 var mongoose = require('mongoose');
@@ -58,13 +58,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
-
-
-
-
 // passport config
 var Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
@@ -74,5 +67,8 @@ passport.deserializeUser(Account.deserializeUser());
 // mongoose
 mongoose.connect('mongodb://localhost/passport_local_mongoose');
 
+var server = http.createServer(app);
 
-module.exports = app;
+server.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})
