@@ -65,10 +65,17 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // mongoose
-mongoose.connect('mongodb://localhost/passport_local_mongoose');
+mongoose.connect('mongodb://localhost/passport_local_mongoose').then(() => {
+  var server = http.createServer(app);
+  
+  server.listen(port, () => {
+      console.log(`Example app listening on port ${port}`)
+  })
 
-var server = http.createServer(app);
-
-server.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+}).catch((e) => {
+  console.error("Failed to connnect to database",e);
+  process.exit(1);
 })
+
+
+
